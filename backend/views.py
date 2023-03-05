@@ -37,10 +37,10 @@ class EmailView(APIView):
             )
 
         send_mail(
-            subject=f"[Khoury Designs] {name} sent an email",
-            message=f"{message}",
-            from_email=email,
-            recipient_list=["khourydesignpermits@gmail.com"]
+            f"[Khoury Designs] {name} sent an email",
+            f"{message}",
+            email,
+            ["khourydesignpermits@gmail.com"],
         )
 
         return Response(serializer.data, status.HTTP_200_OK)
