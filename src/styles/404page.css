@@ -1,0 +1,25 @@
+.error-body {
+    padding: 0px 50px;
+    height: calc(100vh - 159px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-header {
+    font-size: 200px;
+    font-weight: bold;
+    margin-right: 100px;
+}
+
+@media (max-width: 1000px) {
+    .error-header {
+        font-size: 150px;
+    }
+}
+
+@media (max-width: 700px) {
+    .error-header {
+        display: none;
+    }
+}

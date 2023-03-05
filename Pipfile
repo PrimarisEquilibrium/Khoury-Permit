@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+django-debug-toolbar = "*"
+djangorestframework = "*"
+django-cors-headers = "*"
+pillow = "*"
+python-dotenv = "*"
+requests = "*"
+django-storages = "*"
+boto3 = "*"
+mysqlclient = "*"
+whitenoise = "*"
+dj-database-url = "==0.5.0"
+waitress = "*"
+django-cleanup = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
