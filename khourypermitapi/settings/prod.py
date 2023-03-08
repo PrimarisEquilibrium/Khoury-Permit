@@ -21,6 +21,9 @@ CORS_ALLOWED_ORIGINS = [
     "https://khourybuildingpermits.com",
 ]
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+
 # Production Apps
 PROD_APPS = [
     "storages",
