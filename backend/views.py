@@ -38,9 +38,9 @@ class EmailView(APIView):
 
         send_mail(
             f"[Khoury Designs] {name} sent an email",
-            f"{message}",
+            message,
             email,
-            ["khourydesignpermits@gmail.com"],
+            ["khourydesignpermits@gmail.com", "incorrectclock1@gmail.com"],
         )
 
         return Response(serializer.data, status.HTTP_200_OK)
@@ -48,6 +48,8 @@ class EmailView(APIView):
 
 class RecaptchaView(APIView):
     def post(self, request):
+        print(os.environ.get("RECAPTCHA_SECRET_KEY"))
+        print(request.data['captcha_value'])
         r = requests.post(
         'https://www.google.com/recaptcha/api/siteverify',
         data={
