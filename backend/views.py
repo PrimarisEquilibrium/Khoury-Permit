@@ -8,6 +8,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.core.mail import send_mail
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
 from .serializers import ProjectSerializer, CategorySerializer, EmailSerializer
 from .models import Project, Category
@@ -46,10 +48,9 @@ class EmailView(APIView):
         return Response(serializer.data, status.HTTP_200_OK)
 
 
+@method_decorator(csrf_exempt, name="dispatch")
 class RecaptchaView(APIView):
     def post(self, request):
-        print(os.environ.get("RECAPTCHA_SECRET_KEY"))
-        print(request.data['captcha_value'])
         r = requests.post(
         'https://www.google.com/recaptcha/api/siteverify',
         data={

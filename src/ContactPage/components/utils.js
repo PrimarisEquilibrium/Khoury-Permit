@@ -1,4 +1,4 @@
-import { BASE_URL } from "../../utils"
+import { BASE_URL } from "../../utils";
 
 export async function sendEmail(name, email, message) {
   const rawResponse = await fetch(`${BASE_URL}/api/email/`, {
@@ -13,7 +13,7 @@ export async function sendEmail(name, email, message) {
       message: message,
     }),
   }).catch((error) => {
-    return false; 
+    return false;
   });
 
   if (rawResponse.ok) {
@@ -40,13 +40,10 @@ export async function reCaptchaValidator(reRef) {
 
   const response = await fetch(`${BASE_URL}/api/recaptcha/`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      captcha_value: token,
-    }),
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ captcha_value: token }),
   });
+
   const data = await response.json();
   return data;
 }
