@@ -51,6 +51,7 @@ class EmailView(APIView):
 @method_decorator(csrf_exempt, name="dispatch")
 class RecaptchaView(APIView):
     def post(self, request):
+        print(request)
         r = requests.post(
         'https://www.google.com/recaptcha/api/siteverify',
         data={

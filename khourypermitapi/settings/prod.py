@@ -11,7 +11,6 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     "https://khourybuildingpermits.com",
-    "http://khourybuildingpermits.com"
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -20,7 +19,6 @@ CORS_ALLOW_HEADERS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
     "https://khourybuildingpermits.com",
-    "http://khourybuildingpermits.com"
 ]
 
 # Production Apps

@@ -42,7 +42,10 @@ export async function reCaptchaValidator(reRef) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ captcha_value: token }),
-  });
+  })
+  .catch( 
+    (error) => Promise.reject(`Unable to fetch ReCaptcha API endpoint, ${error}`)
+  )
 
   const data = await response.json();
   return data;

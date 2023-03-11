@@ -24,10 +24,11 @@ function ContactForm() {
     }
 
     const captchaResult = await reCaptchaValidator(reRef);
+    const success = captchaResult?.captcha?.success ? true : false
 
-    if (!captchaResult.captcha.success) {
+    if (!success) {
       setAlertType("error");
-      setAlert("Unable to send email!");
+      setAlert("Error occured with ReCaptcha, please try again.");
       return;
     }
 
