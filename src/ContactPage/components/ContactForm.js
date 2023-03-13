@@ -2,11 +2,13 @@ import React, { useRef, useState } from "react";
 import { useAlert, AlertDisplay } from "../../utils";
 import { validateEmail, sendEmail, reCaptchaValidator } from "./utils";
 import Spinner from "react-bootstrap/Spinner";
+import ReCAPTCHA from "react-google-recaptcha";
 
 function ContactForm() {
   const [alert, setAlert] = useAlert("");
   const [alertType, setAlertType] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const reRef = useRef();
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -18,6 +20,15 @@ function ContactForm() {
     if (!validateEmail(email) || !name || !message) {
       setAlertType("error");
       setAlert("Email and/or other fields may be invalid!");
+      return;
+    }
+
+    const captchaResult = await reCaptchaValidator(reRef);
+    const success = captchaResult?.captcha?.success ? true : false;
+
+    if (!success) {
+      setAlertType("error");
+      setAlert("Error occured with ReCaptcha, please try again.");
       return;
     }
 
@@ -59,6 +70,11 @@ function ContactForm() {
       ) : (
         <button className="submit-btn">Submit</button>
       )}
+      <ReCAPTCHA
+        sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+        size="invisible"
+        ref={reRef}
+      />
     </form>
   );
 }
