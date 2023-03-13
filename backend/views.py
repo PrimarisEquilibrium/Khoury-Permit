@@ -26,6 +26,7 @@ class CategoryView(ListAPIView):
 
 
 class EmailView(APIView):
+    @method_decorator(csrf_exempt)
     def post(self, request):
         serializer = EmailSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -48,10 +49,9 @@ class EmailView(APIView):
         return Response(serializer.data, status.HTTP_200_OK)
 
 
-@method_decorator(csrf_exempt, name="dispatch")
 class RecaptchaView(APIView):
+    @method_decorator(csrf_exempt) 
     def post(self, request):
-        print(request)
         r = requests.post(
         'https://www.google.com/recaptcha/api/siteverify',
         data={
