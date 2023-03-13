@@ -18,6 +18,7 @@ whitenoise = "*"
 dj-database-url = "==0.5.0"
 waitress = "*"
 django-cleanup = "*"
+django-braces = "*"
 
 [dev-packages]
 

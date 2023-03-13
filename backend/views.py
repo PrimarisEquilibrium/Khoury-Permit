@@ -6,10 +6,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
 from django.core.mail import send_mail
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.decorators import method_decorator
+from braces.views import CsrfExemptMixin
 
 from .serializers import ProjectSerializer, CategorySerializer, EmailSerializer
 from .models import Project, Category
@@ -25,8 +23,9 @@ class CategoryView(ListAPIView):
     serializer_class = CategorySerializer
 
 
-class EmailView(APIView):
-    @method_decorator(csrf_exempt)
+class EmailView(CsrfExemptMixin, APIView):
+    authentication_classes = []
+
     def post(self, request):
         serializer = EmailSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -49,8 +48,9 @@ class EmailView(APIView):
         return Response(serializer.data, status.HTTP_200_OK)
 
 
-class RecaptchaView(APIView):
-    @method_decorator(csrf_exempt) 
+class RecaptchaView(CsrfExemptMixin, APIView):
+    authentication_classes = []
+
     def post(self, request):
         r = requests.post(
         'https://www.google.com/recaptcha/api/siteverify',
