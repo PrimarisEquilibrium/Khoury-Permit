@@ -23,6 +23,15 @@ a:link {
     font-weight: bold;
 }
 
+.logo-text {
+    color: white;
+    text-decoration: none;
+}
+
+.logo-text:hover {
+    color: white;
+}
+
 .nav-btn {
     margin-left: 30px;
     font-size: 16px;

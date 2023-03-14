@@ -34,7 +34,7 @@ function Navbar({ active }) {
     >
       <List>
         <ListItem>
-          <a href="/" style={{color: "black"}}>
+          <a href="/" style={{ color: "black" }}>
             <ListItemButton>
               <ListItemIcon>
                 <Home />
@@ -44,7 +44,7 @@ function Navbar({ active }) {
           </a>
         </ListItem>
         <ListItem>
-          <a href="/contact" style={{color: "black"}}>
+          <a href="/contact" style={{ color: "black" }}>
             <ListItemButton>
               <ListItemIcon>
                 <MailIcon />
@@ -59,7 +59,9 @@ function Navbar({ active }) {
 
   return (
     <nav className="nav">
-      <div className="logo">KHOURY DESIGN AND PERMIT DRAWINGS</div>
+      <div className="logo">
+        <a href="/" className="logo-text">KHOURY DESIGN AND PERMIT DRAWINGS</a>
+      </div>
       <div className="nav-options">
         {active === "home" ? (
           <a href="/" className="nav-btn active">

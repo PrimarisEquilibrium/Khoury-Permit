@@ -19,13 +19,15 @@ function GalleryLightBox({ displayImage, images, name, category, categories }) {
   const gotoNext = () =>
     currentImageIndex + 1 < images.length &&
     setCurrentIndex(currentImageIndex + 1);
-  
-  const displayCategory = categories.filter(c => c.id === category).map(c => c.category)
+
+  const displayCategory = categories
+    .filter((c) => c.id === category)
+    .map((c) => c.category);
 
   return (
     <div>
-      <div className="content">
-        <div className="content-overlay" onClick={() => setOpen(true)}></div>
+      <div className="content" onClick={() => setOpen(true)}>
+        <div className="content-overlay"></div>
         <img className="gallery-img" src={displayImage} alt="gallery-img" />
         <div className="content-details fadeIn-bottom">
           <h3 className="content-title">{name}</h3>

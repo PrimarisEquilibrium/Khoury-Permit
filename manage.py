@@ -8,8 +8,8 @@ import sys
 def main():
     """Run administrative tasks."""
 
-    # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'khourypermitapi.settings.dev')
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'khourypermitapi.settings.prod')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'khourypermitapi.settings.dev')
+    # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'khourypermitapi.settings.prod')
 
     load_dotenv(".env")
 
