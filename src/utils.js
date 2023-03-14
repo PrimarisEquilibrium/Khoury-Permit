@@ -2,8 +2,8 @@ import React, { createContext, useContext, useState } from "react";
 import Alert from "@mui/material/Alert";
 import { alertStyles } from "./styles/alertStyles";
 
-// export const BASE_URL = `https://${window.location.host}`;
-export const BASE_URL = `http://127.0.0.1:8000`;
+export const BASE_URL = `https://${window.location.host}`;
+// export const BASE_URL = `http://127.0.0.1:8000`;
 
 const AlertMessage = createContext();
 
